@@ -25,3 +25,16 @@ class ArtistPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('artist')
     ]
+
+
+class HomePage(Page):
+    game = models.CharField(max_length=100)
+    button1 = models.CharField(max_length=100)
+    button2 = models.CharField(max_length=100)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('game'),
+        FieldPanel('button1'),
+        FieldPanel('button2')
+    ]
+
