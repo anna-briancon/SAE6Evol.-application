@@ -7,7 +7,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-./venvdjango/*
+venvdjango/*
 
 # C extensions
 *.so
