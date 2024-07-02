@@ -14,10 +14,11 @@
             background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+            height:100vh;
+            width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             background-image: url("{% static 'fond.jpg' %}");
             background-size: cover;
             background-repeat: no-repeat;
@@ -26,9 +27,8 @@
 
         .cover {
             background-color: rgba(0, 0, 0, 0.578);
-            width: 100vw;
-            height: 100vh;
-            padding: 20px;
+            width:100%;
+            height:100%;
             border-radius: 5px;
             align-items: center;
             display: flex;
@@ -37,6 +37,8 @@
         }
 
         .container {
+            width: 100%;
+            height: 100%;
             text-align: center;
         }
 
@@ -64,6 +66,7 @@
         a:hover {
             background-color: #007bff;
             color: #e6e6e6;
+            cursor: pointer;
         }
     </style>
 </head>
