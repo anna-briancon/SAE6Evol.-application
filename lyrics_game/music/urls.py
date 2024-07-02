@@ -1,8 +1,8 @@
 from django.urls import path
 from . import views
+from .views import artiste_view
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('artist/', views.artist_quiz, name='artist'),
-    path('lyrics/', views.lyrics_quiz, name='lyrics'),
+    path('artiste/', views.artiste_view, name='artiste'),
+    path('guess/', views.guess_artist, name='guess_artist'),
 ]

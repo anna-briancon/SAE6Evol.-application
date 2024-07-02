@@ -19,13 +19,11 @@ class Song(models.Model):
         return f"{self.title} by {self.artist.name}"
 
 
-# artist page
 class ArtistPage(Page):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     content_panels = Page.content_panels + [
         FieldPanel('artist')
     ]
-
 
 class HomePage(Page):
     game = models.CharField(max_length=100)
@@ -38,3 +36,21 @@ class HomePage(Page):
         FieldPanel('button2')
     ]
 
+class ArtistePage(Page):
+    api_url = models.URLField(blank=True)
+
+from django.db import models
+
+class Chanteur(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class Chanson(models.Model):
+    artist = models.ForeignKey(Chanteur, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    lyrics = models.TextField()
+
+    def __str__(self):
+        return f"{self.title} by {self.artist}"

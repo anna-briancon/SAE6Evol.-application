@@ -15,7 +15,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ArtistePage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                ('page_ptr', models.OneToOneField(
+                    auto_created=True,
+                    on_delete=django.db.models.deletion.CASCADE, 
+                    parent_link=True,
+                    primary_key=True,
+                    serialize=False,
+                    to='wagtailcore.page',
+                )),
                 ('api_url', models.URLField(blank=True)),
                 ('page_title', models.CharField(max_length=255)),
             ],
@@ -25,12 +32,12 @@ class Migration(migrations.Migration):
             bases=('wagtailcore.page',),
         ),
         migrations.RemoveField(
-            model_name='artistpage',
-            name='artist',
+            model_name='artistepage',
+            name='page_ptr',  # Correct the field name here
         ),
         migrations.RemoveField(
-            model_name='artistpage',
-            name='page_ptr',
+            model_name='artistepage',
+            name='api_url',  # Adjust as needed based on your model definition
         ),
         migrations.DeleteModel(
             name='QuizQuestion',

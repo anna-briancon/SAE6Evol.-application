@@ -11,7 +11,7 @@ def get_lyrics(artist, title):
 
 def get_artist():
 
-    fichier_json = './../../chanteurs.json'
+    fichier_json = './../chanteurs.json'
 
 # Lire le fichier JSON
     with open(fichier_json, 'r', encoding='utf-8') as file:
@@ -24,7 +24,3 @@ def get_artist():
     chanson_aleatoire = random.choice(chanteur_aleatoire['songs'])
     chaine_modifiee = chanson_aleatoire.replace(" ", "%")
     return get_lyrics(chanteur_modifiee, chaine_modifiee)
-
-
-    
-get_artist()     
