@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devinez l'artiste</title>
+    <link rel="stylesheet" href="files/styles_artiste.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,28 +21,31 @@
 
         .container {
             display: flex;
-            flex: 1;
-            justify-content: space-between;
-            align-items: stretch;
-            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            height: 80%;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Pour que les coins arrondis fonctionnent correctement */
-            max-width: 900px;
-            margin: 20px;
+            overflow: hidden;
+            margin: 1% 0;
         }
 
         .left-column {
-            flex: 2; /* La colonne des paroles prend plus de place */
+            flex: 2;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .right-column {
             flex: 1;
             padding: 20px;
-            background-color: #f8f9fa; /* Fond gris clair pour la colonne de droite */
-            border-radius: 10px; /* Fond arrondi pour le formulaire */
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         h1 {
@@ -60,13 +65,12 @@
         form {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
             width: 100%;
             max-width: 400px;
         }
 
         input[type="text"] {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -75,6 +79,7 @@
         }
 
         button[type="submit"] {
+            width: 96%;
             padding: 10px 20px;
             background-color: #007bff;
             color: #fff;
@@ -107,23 +112,127 @@
             background-color: #007bff;
             color: #e6e6e6;
         }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
     </style>
 </head>
 <body>
     <a class="back-link" href="../../">&lt; Retour à l'accueil</a>
+    <h1>Devinez l'artiste et le titre de la chanson :</h1>
+    <p> {{ correct_artist }} : {{ correct_title }}  </p>
     <div class="container">
         <div class="left-column">
-            <h1>Devinez l'artiste et le titre de la chanson :</h1>
             <p>{{ lyrics }}</p>
         </div>
         <div class="right-column">
-            <form action="{% url 'guess_artist' %}" method="post">
+            <form id="guessForm" action="{% url 'guess_artist' %}" method="post">
                 {% csrf_token %}
                 <input type="text" name="artist_guess" placeholder="Artiste" required>
                 <input type="text" name="title_guess" placeholder="Titre de la chanson" required>
+                <input type="hidden" name="correct_artist" value="{{ correct_artist }}">
+                <input type="hidden" name="correct_title" value="{{ correct_title }}">
                 <button type="submit">Soumettre</button>
             </form>
         </div>
     </div>
+
+    <div id="popupOverlay" class="popup-overlay"></div>
+    <div id="popup" class="popup">
+        <p id="popupMessage"></p>
+        <button id="closeButton" onclick="closePopup()">Réessayer</button>
+        <button id="revealAnswerButton" style="display: none;" onclick="revealAnswer()">Afficher la réponse</button>
+        <button id="closeButton2" onclick="retry()">Fermer</button>
+        <button id="retryButton" style="display: none;" onclick="retry()">Recommencer</button>
+    </div>
+
+    <script>
+        document.getElementById('guessForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            fetch("{% url 'guess_artist' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('popupMessage').innerText = data.message;
+
+                if (data.message.includes('Bravo')) {
+                    document.getElementById('retryButton').style.display = 'inline-block';
+                    document.getElementById('revealAnswerButton').style.display = 'none';
+                    document.getElementById('closeButton2').style.display = 'none';
+                    document.getElementById('closeButton').style.display = 'none';
+                } else {
+                    document.getElementById('revealAnswerButton').style.display = 'inline-block';
+                    document.getElementById('retryButton').style.display = 'none';
+                    document.getElementById('closeButton2').style.display = 'none';
+                }
+
+                document.getElementById('popup').style.display = 'inline-block';
+                document.getElementById('popupOverlay').style.display = 'inline-block';
+            });
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+
+        function revealAnswer() {
+            var correctArtist = "{{ correct_artist }}";
+            var correctTitle = "{{ correct_title }}";
+            document.getElementById('popupMessage').innerText = "La bonne réponse était : " + correctArtist + " - " + correctTitle;
+            document.getElementById('revealAnswerButton').style.display = 'none';
+            document.getElementById('closeButton').style.display = 'none';
+            document.getElementById('closeButton2').style.display = 'inline-block';
+        }
+
+        function retry() {
+            window.location.reload();
+        }
+    </script>
 </body>
 </html>
