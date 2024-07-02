@@ -6,3 +6,12 @@
 __pycache__/
 
 venvdjango/*
+
+# Ignorer les fichiers .DS_Store générés par macOS
+.DS_Store
+
+# Ignorer les migrations de Django
+music/migrations/*
+
+# Ignorer le répertoire static
+static/
