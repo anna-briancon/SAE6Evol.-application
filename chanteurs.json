@@ -1,0 +1,460 @@
+[
+    {
+      "name": "Michael Jackson",
+      "songs": ["Thriller", "Billie Jean", "Beat It"]
+    },
+    {
+      "name": "Madonna",
+      "songs": ["Like a Prayer", "Vogue", "Material Girl"]
+    },
+    {
+      "name": "Elton John",
+      "songs": ["Rocket Man", "Tiny Dancer", "Your Song"]
+    },
+    {
+      "name": "Whitney Houston",
+      "songs": ["I Will Always Love You", "Greatest Love of All", "I Wanna Dance with Somebody"]
+    },
+    {
+      "name": "Prince",
+      "songs": ["Purple Rain", "When Doves Cry", "Kiss"]
+    },
+    {
+      "name": "Céline Dion",
+      "songs": ["My Heart Will Go On", "The Power of Love", "Because You Loved Me"]
+    },
+    {
+      "name": "David Bowie",
+      "songs": ["Heroes", "Space Oddity", "Let's Dance"]
+    },
+    {
+      "name": "Beyoncé",
+      "songs": ["Crazy in Love", "Single Ladies (Put a Ring on It)", "Halo"]
+    },
+    {
+      "name": "Adele",
+      "songs": ["Someone Like You", "Rolling in the Deep", "Hello"]
+    },
+    {
+      "name": "Bruno Mars",
+      "songs": ["Just the Way You Are", "Uptown Funk", "Grenade"]
+    },
+    {
+      "name": "Taylor Swift",
+      "songs": ["Love Story", "Shake It Off", "Blank Space"]
+    },
+    {
+      "name": "Justin Bieber",
+      "songs": ["Baby", "Sorry", "Love Yourself"]
+    },
+    {
+      "name": "Rihanna",
+      "songs": ["Umbrella", "Diamonds", "We Found Love"]
+    },
+    {
+      "name": "Ed Sheeran",
+      "songs": ["Shape of You", "Thinking Out Loud", "Perfect"]
+    },
+    {
+      "name": "Shakira",
+      "songs": ["Hips Don't Lie", "Whenever, Wherever", "Waka Waka (This Time for Africa)"]
+    },
+    {
+      "name": "Katy Perry",
+      "songs": ["Firework", "Teenage Dream", "Roar"]
+    },
+    {
+      "name": "Lady Gaga",
+      "songs": ["Poker Face", "Bad Romance", "Shallow"]
+    },
+    {
+      "name": "Ariana Grande",
+      "songs": ["Thank U, Next", "7 Rings", "Problem"]
+    },
+    {
+      "name": "John Lennon",
+      "songs": ["Imagine", "Instant Karma!", "Jealous Guy"]
+    },
+    {
+      "name": "Freddie Mercury (Queen)",
+      "songs": ["Bohemian Rhapsody", "We Are the Champions", "Somebody to Love"]
+    },
+    {
+      "name": "Bob Dylan",
+      "songs": ["Like a Rolling Stone", "Blowin' in the Wind", "The Times They Are a-Changin'"]
+    },
+    {
+      "name": "Elvis Presley",
+      "songs": ["Can't Help Falling in Love", "Jailhouse Rock", "Suspicious Minds"]
+    },
+    {
+      "name": "Frank Sinatra",
+      "songs": ["My Way", "New York, New York", "Fly Me to the Moon"]
+    },
+    {
+      "name": "Marvin Gaye",
+      "songs": ["What's Going On", "Sexual Healing", "Let's Get It On"]
+    },
+    {
+      "name": "Stevie Wonder",
+      "songs": ["Superstition", "Isn't She Lovely", "I Just Called to Say I Love You"]
+    },
+    {
+      "name": "Paul McCartney",
+      "songs": ["Maybe I'm Amazed", "Live and Let Die", "Band on the Run"]
+    },
+    {
+      "name": "Mick Jagger (The Rolling Stones)",
+      "songs": ["Paint It Black", "(I Can't Get No) Satisfaction", "Angie"]
+    },
+    {
+      "name": "Bruce Springsteen",
+      "songs": ["Born to Run", "Dancing in the Dark", "Born in the U.S.A."]
+    },
+    {
+      "name": "Eminem",
+      "songs": ["Lose Yourself", "Stan", "Not Afraid"]
+    },
+    {
+      "name": "Drake",
+      "songs": ["Hotline Bling", "God's Plan", "In My Feelings"]
+    },
+    {
+      "name": "Billy Joel",
+      "songs": ["Piano Man", "Uptown Girl", "We Didn't Start the Fire"]
+    },
+    {
+      "name": "Alicia Keys",
+      "songs": ["Fallin'", "No One", "If I Ain't Got You"]
+    },
+    {
+      "name": "Sam Smith",
+      "songs": ["Stay With Me", "Too Good at Goodbyes", "I'm Not the Only One"]
+    },
+    {
+      "name": "Sia",
+      "songs": ["Chandelier", "Cheap Thrills", "Elastic Heart"]
+    },
+    {
+      "name": "Kanye West",
+      "songs": ["Stronger", "Gold Digger", "Heartless"]
+    },
+    {
+      "name": "Ariana Grande",
+      "songs": ["thank u, next", "7 rings", "Problem"]
+    },
+    {
+      "name": "Maroon 5",
+      "songs": ["Sugar", "Moves Like Jagger", "She Will Be Loved"]
+    },
+    {
+      "name": "The Weeknd",
+      "songs": ["Blinding Lights", "Can't Feel My Face", "Starboy"]
+    },
+    {
+      "name": "Dua Lipa",
+      "songs": ["New Rules", "Don't Start Now", "Levitating"]
+    },
+    {
+      "name": "Billie Eilish",
+      "songs": ["Bad Guy", "Everything I Wanted", "When the Party's Over"]
+    },
+    {
+      "name": "Shawn Mendes",
+      "songs": ["Stitches", "Treat You Better", "Senorita"]
+    },
+    {
+      "name": "Post Malone",
+      "songs": ["Rockstar", "Circles", "Sunflower"]
+    },
+    {
+      "name": "Halsey",
+      "songs": ["Without Me", "Closer", "Bad at Love"]
+    },
+    {
+      "name": "Selena Gomez",
+      "songs": ["Come & Get It", "Lose You to Love Me", "The Heart Wants What It Wants"]
+    },
+    {
+      "name": "Justin Timberlake",
+      "songs": ["Cry Me a River", "Can't Stop the Feeling!", "Mirrors"]
+    },
+    {
+      "name": "Harry Styles",
+      "songs": ["Sign of the Times", "Watermelon Sugar", "Adore You"]
+    },
+    {
+      "name": "Lana Del Rey",
+      "songs": ["Summertime Sadness", "Young and Beautiful", "Born to Die"]
+    },
+    {
+      "name": "Khalid",
+      "songs": ["Talk", "Location", "Young Dumb & Broke"]
+    },
+    {
+      "name": "Camila Cabello",
+      "songs": ["Havana", "Señorita", "Never Be the Same"]
+    },
+    {
+      "name": "Miley Cyrus",
+      "songs": ["Wrecking Ball", "Party in the U.S.A.", "Malibu"]
+    },
+    {
+      "name": "Jennifer Lopez",
+      "songs": ["On the Floor", "If You Had My Love", "Jenny from the Block"]
+    },
+    {
+      "name": "Nicki Minaj",
+      "songs": ["Super Bass", "Starships", "Anaconda"]
+    },
+    {
+      "name": "Cardi B",
+      "songs": ["Bodak Yellow", "I Like It", "WAP"]
+    },
+    {
+      "name": "Kendrick Lamar",
+      "songs": ["HUMBLE.", "Alright", "DNA."]
+    },
+    {
+      "name": "Childish Gambino",
+      "songs": ["Redbone", "This Is America", "3005"]
+    },
+    {
+      "name": "Travis Scott",
+      "songs": ["SICKO MODE", "Goosebumps", "Highest in the Room"]
+    },
+    {
+      "name": "Lil Nas X",
+      "songs": ["Old Town Road", "MONTERO (Call Me By Your Name)", "Industry Baby"]
+    },
+    {
+      "name": "Lizzo",
+      "songs": ["Truth Hurts", "Good as Hell", "Juice"]
+    },
+    {
+      "name": "Doja Cat",
+      "songs": ["Say So", "Kiss Me More", "Streets"]
+    },
+    {
+        "name": "Édith Piaf",
+        "songs": ["La Vie en rose", "Non, je ne regrette rien", "Milord"]
+      },
+      {
+        "name": "Charles Aznavour",
+        "songs": ["La Bohème", "She", "Emmenez-moi"]
+      },
+      {
+        "name": "Johnny Hallyday",
+        "songs": ["Que je t'aime", "Allumer le feu", "Je te promets"]
+      },
+      {
+        "name": "Serge Gainsbourg",
+        "songs": ["Je t'aime... moi non plus", "La Javanaise", "Bonnie and Clyde"]
+      },
+      {
+        "name": "Françoise Hardy",
+        "songs": ["Tous les garçons et les filles", "Le Temps de l'amour", "Mon amie la rose"]
+      },
+      {
+        "name": "Jacques Brel",
+        "songs": ["Ne me quitte pas", "Amsterdam", "Quand on n'a que l'amour"]
+      },
+      {
+        "name": "Julien Clerc",
+        "songs": ["Ma préférence", "Femme je vous aime", "Ce n'est rien"]
+      },
+      {
+        "name": "Michel Sardou",
+        "songs": ["La Maladie d'amour", "Les Lacs du Connemara", "En chantant"]
+      },
+      {
+        "name": "Francis Cabrel",
+        "songs": ["Je l'aime à mourir", "Petite Marie", "La Corrida"]
+      },
+      {
+        "name": "Patrick Bruel",
+        "songs": ["Casser la voix", "Place des grands hommes", "Alors regarde"]
+      },
+      {
+        "name": "Mylène Farmer",
+        "songs": ["Désenchantée", "Libertine", "Sans contrefaçon"]
+      },
+      {
+        "name": "Jean-Jacques Goldman",
+        "songs": ["Je te donne", "Quand la musique est bonne", "Encore un matin"]
+      },
+      {
+        "name": "Claude François",
+        "songs": ["Comme d'habitude", "Le Téléphone pleure", "Alexandrie Alexandra"]
+      },
+      {
+        "name": "Renaud",
+        "songs": ["Mistral gagnant", "Laisse béton", "Manhattan-Kaboul"]
+      },
+      {
+        "name": "Vanessa Paradis",
+        "songs": ["Joe le taxi", "Be My Baby", "Divine Idylle"]
+      },
+      {
+        "name": "Stromae",
+        "songs": ["Alors on danse", "Papaoutai", "Formidable"]
+      },
+      {
+        "name": "Zaz",
+        "songs": ["Je veux", "On ira", "Éblouie par la nuit"]
+      },
+      {
+        "name": "Florent Pagny",
+        "songs": ["Savoir aimer", "Ma liberté de penser", "Caruso"]
+      },
+      {
+        "name": "Louane",
+        "songs": ["Avenir", "Jour 1", "Si t'étais là"]
+      },
+      {
+        "name": "Kendji Girac",
+        "songs": ["Color Gitano", "Andalouse", "Les Yeux de la mama"]
+      },
+      {
+        "name": "Indochine",
+        "songs": ["L'Aventurier", "J'ai demandé à la lune", "Trois nuits par semaine"]
+      },
+      {
+        "name": "Christine and the Queens",
+        "songs": ["Christine", "Saint Claude", "Tilted"]
+      },
+      {
+        "name": "MC Solaar",
+        "songs": ["Bouge de là", "Caroline", "La Belle et le Bad Boy"]
+      },
+      {
+        "name": "Maître Gims",
+        "songs": ["Sapés comme jamais", "Bella", "J'me tire"]
+      },
+      {
+        "name": "Clara Luciani",
+        "songs": ["La Grenade", "Nue", "Le Reste"]
+      },
+      {
+        "name": "Patrick Fiori",
+        "songs": ["Que tu reviennes", "4 mots sur un piano", "J'y vais"]
+      },
+      {
+        "name": "Alizée",
+        "songs": ["Moi... Lolita", "J'en ai marre!", "Gourmandises"]
+      },
+      {
+        "name": "Garou",
+        "songs": ["Seul", "Sous le vent", "Belle"]
+      },
+      {
+        "name": "Pascal Obispo",
+        "songs": ["Lucie", "Tombé pour elle", "Fan"]
+      },
+      {
+        "name": "Soprano",
+        "songs": ["À la bien", "Clown", "Cosmo"]
+      },
+      {
+        "name": "Tina Arena",
+        "songs": ["Aller plus haut", "Aimer jusqu'à l'impossible", "Je te retrouve un peu"]
+      },
+      {
+        "name": "Vianney",
+        "songs": ["Pas là", "Je m'en vais", "Dumbo"]
+      },
+      {
+        "name": "Yannick Noah",
+        "songs": ["Saga Africa", "Aux arbres citoyens", "Métisse"]
+      },
+      {
+        "name": "Brigitte Bardot",
+        "songs": ["Harley Davidson", "Moi je joue", "La Madrague"]
+      },
+      {
+        "name": "Benjamin Biolay",
+        "songs": ["La Superbe", "Ton héritage", "Comment est ta peine?"]
+      },
+      {
+        "name": "Juliette Armanet",
+        "songs": ["L'Amour en solitaire", "À la folie", "L'Indien"]
+      },
+      {
+        "name": "Aya Nakamura",
+        "songs": ["Djadja", "Pookie", "Copines"]
+      },
+      {
+        "name": "Angèle",
+        "songs": ["Tout oublier", "Balance ton quoi", "Flou"]
+      },
+      {
+        "name": "Véronique Sanson",
+        "songs": ["Amoureuse", "Ma révérence", "Besoin de personne"]
+      },
+      {
+        "name": "Nolwenn Leroy",
+        "songs": ["Cassé", "Nolwenn Ohwo!", "Tri Martolod"]
+      },
+      {
+        "name": "Jul",
+        "songs": ["Tchikita", "Wesh alors", "Ma jolie"]
+      },
+      {
+        "name": "Camélia Jordana",
+        "songs": ["Non, non, non (écouter Barbara)", "Je te suis", "Facile"]
+      },
+      {
+        "name": "Kyo",
+        "songs": ["Le Chemin", "Dernière danse", "Je saigne encore"]
+      },
+      {
+        "name": "Claudio Capéo",
+        "songs": ["Un homme debout", "Riche", "Ta main"]
+      },
+      {
+        "name": "Laurent Voulzy",
+        "songs": ["Le Soleil donne", "Rockollection", "Belle-Île-en-Mer, Marie-Galante"]
+      },
+      {
+        "name": "Vitaa",
+        "songs": ["À fleur de toi", "Je te le donne", "Ça va ça vient"]
+      },
+      {
+        "name": "Slimane",
+        "songs": ["Paname", "Adieu", "Viens on s’aime"]
+      },
+      {
+        "name": "Isabelle Boulay",
+        "songs": ["Parle-moi", "Je t'oublierai, je t'oublierai", "Perce les nuages"]
+      },
+      {
+        "name": "Coeur de Pirate",
+        "songs": ["Comme des enfants", "Adieu", "Crier tout bas"]
+      },
+      {
+        "name": "Amir",
+        "songs": ["J'ai cherché", "On dirait", "Longtemps"]
+      },
+      {
+        "name": "Zazie",
+        "songs": ["Je suis un homme", "Rue de la paix", "Speed"]
+      },
+      {
+        "name": "Dadju",
+        "songs": ["Reine", "Bob Marley", "Jaloux"]
+      },
+      {
+        "name": "Jean-Louis Aubert",
+        "songs": ["Temps à nouveau", "Alter Ego", "Voilà, c'est fini"]
+      },
+      {
+        "name": "Lou Doillon",
+        "songs": ["I.C.U.", "Places", "Too Much"]
+      },
+      {
+        "name": "Lomepal",
+        "songs": ["1000°C", "Yeux disent", "Trop beau"]
+      }
+  ]
+
+  
