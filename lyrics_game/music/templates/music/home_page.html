@@ -75,10 +75,10 @@
         <div class="cover">
             <img src="{% static 'logoLQ.png' %}" style="width: 18%; position: absolute; margin-bottom: 25%;" alt="LyriQuest">
             {% block content %}
-            <p><a>{{ page.buttonGuessTitle }}</a></p>
-            <p><a href="/music/artiste/">{{ page.buttonGuessArtist }}</a></p>
+            <p><a href="/music/titre">{{ page.buttonGuessTitle }}</a></p>
+            <p><a href="/music/juste_artiste/">{{ page.buttonGuessArtist }}</a></p>
             <p><a>{{ page.buttonGuessLyrics }}</a></p>
-            <p><a>{{ page.buttonGuessTitleAndArtist }}</a></p>
+            <p><a href="/music/artiste/">{{ page.buttonGuessTitleAndArtist }}</a></p>
             {% endblock %}
         </div>
     </div>

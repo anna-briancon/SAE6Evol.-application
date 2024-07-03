@@ -7,8 +7,7 @@
     <list default="true" id="fba8a1e9-3550-4245-9751-4edc3231188d" name="Changes" comment="fix migrations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lyrics_game/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyrics_game/music/migrations/0006_artistepage_chanson_chanteur_delete_quizquestion_and_more 2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyrics_game/music/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/music/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/music/migrations/0006_artistepage_chanson_chanteur_delete_quizquestion_and_more 3.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lyrics_game/music/templates/music/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/music/templates/music/home_page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +50,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "front"
+    "git-widget-placeholder": "main"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -94,13 +93,30 @@
       <option name="project" value="LOCAL" />
       <updated>1719997441398</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modif modèle de la homepage">
+      <option name="closed" value="true" />
+      <created>1720011392381</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720011392381</updated>
+    </task>
+    <task id="LOCAL-00005" summary="modif modèle de la homepage">
+      <option name="closed" value="true" />
+      <created>1720011497324</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720011497324</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="correctif css homepage" />
     <MESSAGE value="merge main" />
     <MESSAGE value="fix migrations" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix migrations" />
+    <MESSAGE value="modif modèle de la homepage" />
+    <option name="LAST_COMMIT_MESSAGE" value="modif modèle de la homepage" />
   </component>
 </project>
