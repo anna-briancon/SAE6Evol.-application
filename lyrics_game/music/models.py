@@ -20,12 +20,14 @@ class ArtistPage(Page):
 
 
 class HomePage(Page):
-    game = models.CharField(max_length=100)
-    button1 = models.CharField(max_length=100)
-    button2 = models.CharField(max_length=100)
+    buttonGuessTitle = models.CharField(max_length=100, blank=True)
+    buttonGuessArtist = models.CharField(max_length=100, blank=True)
+    buttonGuessLyrics = models.CharField(max_length=100, blank=True)
+    buttonGuessTitleAndArtist = models.CharField(max_length=100, blank=True)
 
     content_panels = Page.content_panels + [
-        FieldPanel('game'),
-        FieldPanel('button1'),
-        FieldPanel('button2')
+        FieldPanel('buttonGuessTitle'),
+        FieldPanel('buttonGuessArtist'),
+        FieldPanel('buttonGuessLyrics'),
+        FieldPanel('buttonGuessTitleAndArtist')
     ]

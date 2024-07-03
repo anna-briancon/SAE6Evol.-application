@@ -4,13 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fba8a1e9-3550-4245-9751-4edc3231188d" name="Changes" comment="fix migrations" />
+    <list default="true" id="fba8a1e9-3550-4245-9751-4edc3231188d" name="Changes" comment="fix migrations">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/music/migrations/0006_artistepage_chanson_chanteur_delete_quizquestion_and_more 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/music/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/music/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/music/templates/music/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/music/templates/music/home_page.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -40,7 +51,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "front"
   }
 }]]></component>
   <component name="SharedIndexes">
