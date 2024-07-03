@@ -34,11 +34,13 @@ class HomePage(Page):
     buttonGuessTitle = models.CharField(max_length=100, blank=True)
     buttonGuessArtist = models.CharField(max_length=100, blank=True)
     buttonGuessLyrics = models.CharField(max_length=100, blank=True)
+    buttonGuessLyricsFill = models.CharField(max_length=100, blank=True)
     buttonGuessTitleAndArtist = models.CharField(max_length=100, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('buttonGuessTitle'),
         FieldPanel('buttonGuessArtist'),
         FieldPanel('buttonGuessLyrics'),
+        FieldPanel('buttonGuessLyricsFill'),
         FieldPanel('buttonGuessTitleAndArtist')
     ]

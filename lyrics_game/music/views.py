@@ -7,6 +7,9 @@ from django.shortcuts import render, get_object_or_404
 from .forms import LyricsForm, LyricsGameForm
 from .models import Song
 from .utils import get_artist, remove_random_word, process_lyrics, reveal_word
+from django.shortcuts import render, redirect
+from .utils import process_lyrics, reveal_word
+from .forms import LyricsForm
 
 
 def artiste_view(request):
@@ -20,15 +23,31 @@ def artiste_view(request):
     }
     return render(request, 'page/artiste.html', context)
 
+
 def guess_artist(request):
     if request.method == 'POST':
         artist_guess = request.POST.get('artist_guess').strip().lower()
         title_guess = request.POST.get('title_guess').strip().lower()
 
+        correct_artist = request.POST.get('correct_artist').strip().lower()
+        correct_title = request.POST.get('correct_title').strip().lower()
+
+        if artist_guess == correct_artist and title_guess == correct_title:
+            message = "Bravo, vous avez deviné correctement !"
+        else:
+            message = "Désolé, ce n'est pas la bonne réponse."
+
+        return JsonResponse({'message': message})
+
+    return JsonResponse({'message': 'Invalid request'}, status=400)
+
 
 def lyrics_quiz(request):
     while True:
-        lyrics, singer, song_name = get_artist()
+        information = get_artist()
+        lyrics = information['lyrics']
+        singer = information['artist']
+        song_name = information['title']
         if lyrics is not None and len(lyrics) > 0:
             break
 
@@ -41,7 +60,7 @@ def lyrics_quiz(request):
                 result = 'Correct!'
                 result_color = 'green'
             else:
-                result = 'Try again!'
+                result = 'Réessayer!'
                 result_color = 'red'
             words_around = form.cleaned_data['words_around']
         else:
@@ -65,11 +84,6 @@ def lyrics_quiz(request):
         'song_name': song_name
     })
 
-
-from django.shortcuts import render, redirect
-from .utils import process_lyrics, reveal_word
-from .forms import LyricsForm
-
 def lyrics_game_view(request):
     if 'change_song' in request.POST:
         if 'song' in request.session:
@@ -82,7 +96,10 @@ def lyrics_game_view(request):
     lyrics = None
     if 'song' not in request.session:
         while lyrics is None:
-            lyrics, singer, song_name = get_artist()  # This function should fetch the song lyrics
+            information = get_artist()
+            lyrics = information['lyrics']
+            singer = information['artist']
+            song_name = information['title'] # This function should fetch the song lyrics
         request.session['song'] = lyrics
         words, processed_lyrics = process_lyrics(lyrics)
         request.session['words'] = words
@@ -99,7 +116,6 @@ def lyrics_game_view(request):
     if request.method == 'POST':
         form = LyricsGameForm(request.POST)
         if form.is_valid():
-            print("hello")
             guess = form.cleaned_data['user_input']
             processed_lyrics = reveal_word(words, processed_lyrics, guess)
             request.session['processed_lyrics'] = processed_lyrics
@@ -107,7 +123,6 @@ def lyrics_game_view(request):
                 win = True
     else:
         form = LyricsGameForm()
-    print(lyrics)
     context = {
         'form': form,
         'processed_lyrics': ' '.join(processed_lyrics),
@@ -116,21 +131,6 @@ def lyrics_game_view(request):
         'win': win
     }
     return render(request, 'music/lyrics_game.html', context)
-
-
-
-
-        correct_artist = request.POST.get('correct_artist').strip().lower()
-        correct_title = request.POST.get('correct_title').strip().lower()
-
-        if artist_guess == correct_artist and title_guess == correct_title:
-            message = "Bravo, vous avez deviné correctement !"
-        else:
-            message = "Désolé, ce n'est pas la bonne réponse."
-
-        return JsonResponse({'message': message})
-
-    return JsonResponse({'message': 'Invalid request'}, status=400)
 
 def get_hint(request):
     if request.method == 'GET':
@@ -157,6 +157,7 @@ def get_hint(request):
         return JsonResponse({'hint': hint, 'hint_index': hint_index})
 
     return JsonResponse({'message': 'Invalid request'}, status=400)
+
 
 def titre_view(request):
     artist_data = get_artist()

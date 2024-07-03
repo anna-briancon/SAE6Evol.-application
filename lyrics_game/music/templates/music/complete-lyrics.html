@@ -5,7 +5,7 @@
 {% block content %}
 <main>
     <section class="quiz-section">
-        <div class="quiz-title">Complete the Lyrics</div>
+        <div class="quiz-title">Completer les paroles</div>
         <div class="quiz-content">
             <h2> {{ song_name|safe  }} of {{ singer|safe  }}</h2>
             <p id="lyric-complete" class="lyric-text">{{ lyrics|safe }}</p>
@@ -14,7 +14,7 @@
                 {{ form.user_input }}
                 {{ form.random_word }}
                 {{ form.words_around }}
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" s style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
             </form>
             {% if result %}
                 <p id="lyrics-result" style="color: {{ result_color }};">{{ result }}</p>

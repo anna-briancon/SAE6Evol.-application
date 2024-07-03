@@ -136,7 +136,6 @@ def is_word_in_lyrics(word: str, dict_lyrics: dict[str, list[int]]) -> None | li
 def get_artist() -> tuple[str, Any, Any]:
     """
     choose a random song
-    fichier_json = './../chanteurs.json'
     Get random artist and song from json file
     return artist and song as dictionary
     """
@@ -164,6 +163,7 @@ def get_artist() -> tuple[str, Any, Any]:
 def load_artists() -> str:
     """
     Load data from json file to database
+    """
     chanteur_aleatoire = random.choice(data)
     chanteur_modifiee = chanteur_aleatoire['name'].replace(" ", "%")
     chanteur_aleatoire_name = chanteur_aleatoire['name']
@@ -172,9 +172,6 @@ def load_artists() -> str:
     chaine_modifiee = chanson_aleatoire.replace(" ", "%")
     return get_lyrics(chanteur_modifiee, chaine_modifiee), chanteur_aleatoire_name, chanson_aleatoire
 
-
-    return confirmation message
-    """
     json_file = './../artists.json'
 
     with open(json_file, 'r', encoding='utf-8') as file:
