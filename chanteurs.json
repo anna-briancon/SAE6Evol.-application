@@ -454,6 +454,34 @@
       {
         "name": "Lomepal",
         "songs": ["1000°C", "Yeux disent", "Trop beau"]
+      },
+      {
+        "name": "Daniel Balavoine",
+        "songs": ["Tous les cris les S.O.S.", "L'Aziza", "Le Chanteur"]
+      },
+      {
+        "name": "Alain Souchon",
+        "songs": ["Foule sentimentale", "Allô maman bobo", "La Ballade de Jim"]
+      },
+      {
+        "name": "Calogero",
+        "songs": ["En apesanteur", "Face à la mer", "Si seulement je pouvais lui manquer"]
+      },
+      {
+        "name": "Tryo",
+        "songs": ["L'hymne de nos campagnes", "Désolé pour hier soir", "Toi et moi"]
+      },
+      {
+        "name": "Phil Collins",
+        "songs": ["In the Air Tonight", "Against All Odds", "Another Day in Paradise"]
+      },
+      {
+        "name": "BB Brunes",
+        "songs": ["Dis-moi", "Lala Love You", "Coups et blessures"]
+      },
+      {
+        "name": "Damien Saez",
+        "songs": ["Jeune et con", "J'accuse", "Debbie"]
       }
   ]
 
