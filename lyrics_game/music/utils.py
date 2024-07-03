@@ -15,6 +15,10 @@ def clean_lyrics(lyrics, title):
     cleaned_lyrics = re.sub(pattern, '', lyrics)
     return cleaned_lyrics
 
+def clean_lyrics2(lyrics):
+    cleaned_lyrics = re.sub(r"Paroles de la chanson .* par .*", "", lyrics)
+    return cleaned_lyrics.strip()
+
 def get_artist():
     fichier_json = './../chanteurs.json'
 
