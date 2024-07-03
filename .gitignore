@@ -4,6 +4,9 @@
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*/__pycache__/
+.idea/
+lyrics_game/db.sqlite3
 
 venvdjango/*
 
