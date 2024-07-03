@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Accueil</title>
-</head>
-<body>
-    <h1>YO</h1>
-    <p><a href="{% url 'artist' %}">Trouve artiste</a></p>
-    <p><a href="{% url 'lyrics' %}">Trouve parole</a></p>
-</body>
-</html>
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    <div class="parallax"></div>
+    <main>
+        <div class="hero">
+            <h1>Discover the World of Lyrics</h1>
+        </div>
+        <div class="organic-shape"></div>
+        <div class="content">
+            <div class="section">
+                <h2>Welcome to Lyrics Finder</h2>
+                <p>Explore, search, and find lyrics for your favorite songs!</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Lyrics Finder. All rights reserved.</p>
+    </footer>
+{% endblock content %}

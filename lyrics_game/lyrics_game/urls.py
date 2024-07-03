@@ -25,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
+    path('music/', include('music.urls')),  # Include URLs from the music app
     path('', include(wagtail_urls)),
 ]

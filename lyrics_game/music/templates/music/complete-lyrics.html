@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Complete the Lyrics Quiz{% endblock %}
+
+{% block content %}
+<main>
+    <section class="quiz-section">
+        <div class="quiz-title">Complete the Lyrics</div>
+        <div class="quiz-content">
+            <p id="lyric-complete" class="lyric-text">{{lyrics }}</p>
+            <form class="quiz-form" id="lyrics-form">
+                <input type="text" id="lyrics-input" placeholder="Complete the lyrics">
+                <input type="submit" value="Submit">
+            </form>
+            <p id="lyrics-result"></p>
+        </div>
+    </section>
+</main>
+<script>
+    document.getElementById('lyrics-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const lyricsInput = document.getElementById('lyrics-input').value;
+        const lyricsResult = document.getElementById('lyrics-result');
+
+        // Add logic to check if the completed lyrics are correct
+        // This is a placeholder logic
+        if (lyricsInput.toLowerCase() === 'make it better') {
+            lyricsResult.textContent = 'Correct!';
+            lyricsResult.style.color = 'green';
+        } else {
+            lyricsResult.textContent = 'Try again!';
+            lyricsResult.style.color = 'red';
+        }
+    });
+</script>
+{% endblock %}
