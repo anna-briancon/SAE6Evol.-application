@@ -107,29 +107,29 @@ def is_word_in_lyrics(word: str, dict_lyrics: dict[str, list[int]]) -> None | li
 
 def get_artist() -> dict[str, str]:
     """
-    Get random artist and song from json file
+    Get random artist and song from database
 
     return artist and song as dictionary
     """
-    fichier_json = './../artists.json'
+    artists = Artist.objects.all()
+    if not artists.exists():
+        raise ValueError("No artists found in the database")
 
-    with open(fichier_json, 'r', encoding='utf-8') as file:
-        data = json.load(file)
+    random_artist = random.choice(artists)
 
-    while True:
-        random_artist = random.choice(data)
-        edited_artist = random_artist['name'].replace(" ", "%")
-        random_song = random.choice(random_artist['songs'])
-        edited_song = random_song.replace(" ", "%")
+    random_song = random.choice(random_artist.songs)
+    lyrics = get_lyrics(random_artist.name, random_song)
 
-        lyrics = get_lyrics(edited_artist, edited_song)
-        if lyrics:
-            cleaned_lyrics = clean_lyrics(lyrics, random_song)
-            return {
-                'artist': random_artist['name'],
-                'title': random_song,
-                'lyrics': cleaned_lyrics
-            }
+    if lyrics:
+        cleaned_lyrics = clean_lyrics(lyrics, random_song)
+
+        return {
+            'artist': random_artist.name,
+            'title': random_song.title,
+            'lyrics': cleaned_lyrics
+        }
+    else:
+        raise ValueError(f"Lyrics not found for song {random_song} by artist {random_artist.name}")
 
 
 def load_artists() -> str:
@@ -142,6 +142,10 @@ def load_artists() -> str:
 
     with open(json_file, 'r', encoding='utf-8') as file:
         data = json.load(file)
+
+    artists = Artist.objects.all()
+    if artists.exists():
+        artists.delete()
 
     for artist in data:
         new_artist = Artist(name=artist['name'], songs=artist['songs'])
