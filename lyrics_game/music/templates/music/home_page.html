@@ -73,13 +73,13 @@
 <body>
     <div class="container">
         <div class="cover">
-            <img src="{% static 'logoLQ.png' %}" style="width: 18%; position: absolute; margin-bottom: 25%;" alt="LyriQuest">
+            <img src="{% static 'logoLQ.png' %}" style="width: 18%; position: absolute; margin-bottom: 35%;" alt="LyriQuest">
             {% block content %}
             <h1>{{ page.game }}</h1>
+            <p><a href="/music/titre/">Trouver le titre  ⭐ </a></p>
+            <p><a href="/music/juste_artiste/">Trouver l'artiste  ⭐ </a></p>
             <p><a>{{ page.button2 }}</a></p>
             <p><a href="/music/artiste/">{{ page.button1 }}</a></p>
-            <p><a href="/music/titre/">Trouver le titre</a></p>
-
             {% endblock %}
         </div>
     </div>

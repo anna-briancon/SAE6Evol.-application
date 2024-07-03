@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deviner l'artiste</title>
+    <title>Deviner l'auteur</title>
     <link rel="stylesheet" href="files/styles_artiste.css">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -183,26 +182,22 @@
 <body>
     <a class="back-link" href="../../">&lt; Retour à l'accueil</a>
     <img src="../../../static/logoLQ.png" alt="Artiste" style="width: 10%; margin-top: 1%;">
-    <h1>Devinez l'artiste et le titre de la chanson :</h1>
-    <!-- <p>{{ correct_artist }} : {{ correct_title }}</p> -->
+    <h1>Devinez l'artiste de la chanson :</h1>
     <div class="container">
         <div class="left-column">
             <p>{{ lyrics }}</p>
         </div>
         <div class="right-column">
-            <form id="guessForm" action="{% url 'guess_artist' %}" method="post">
+            <form id="guessForm" action="{% url 'guess_juste_artiste' %}" method="post">
                 {% csrf_token %}
+                <p> Titre : {{ correct_title }} </p>
                 <input type="text" name="artist_guess" placeholder="Artiste" required>
-                <input type="text" name="title_guess" placeholder="Titre de la chanson" required>
                 <input type="hidden" name="correct_artist" value="{{ correct_artist }}">
-                <input type="hidden" name="correct_title" value="{{ correct_title }}">
                 <button type="submit">Soumettre</button>
             </form>
             <p id="hintArtistText"></p>
-            <p id="hintTitleText"></p>
             <div class="hint-buttons">
                 <button id="hintArtistButton" class="hint-button">Indice Artiste</button>
-                <button id="hintTitleButton" class="hint-button">Indice Titre</button>
             </div>
 
         </div>
@@ -221,15 +216,13 @@
         let hintArtistIndex = 0;
         let hintTitleIndex = 0;
         const correctArtist = "{{ correct_artist }}";
-        const correctTitle = "{{ correct_title }}";
         const artistHints = Array.from(correctArtist).map((char, i) => correctArtist.slice(0, i + 1));
-        const titleHints = Array.from(correctTitle).map((char, i) => correctTitle.slice(0, i + 1));
 
         document.getElementById('guessForm').addEventListener('submit', function(event) {
             event.preventDefault();
             var formData = new FormData(this);
 
-            fetch("{% url 'guess_artist' %}", {
+            fetch("{% url 'guess_juste_artiste' %}", {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -263,20 +256,13 @@
             }
         });
 
-        document.getElementById('hintTitleButton').addEventListener('click', function() {
-            if (hintTitleIndex < titleHints.length) {
-                document.getElementById('hintTitleText').innerText = "Indice Titre: " + titleHints[hintTitleIndex];
-                hintTitleIndex++;
-            }
-        });
-
         function closePopup() {
             document.getElementById('popup').style.display = 'none';
             document.getElementById('popupOverlay').style.display = 'none';
         }
 
         function revealAnswer() {
-            document.getElementById('popupMessage').innerText = "La bonne réponse était : " + correctArtist + " - " + correctTitle;
+            document.getElementById('popupMessage').innerText = "La bonne réponse était : " + correctArtist;
             document.getElementById('revealAnswerButton').style.display = 'none';
             document.getElementById('closeButton').style.display = 'none';
             document.getElementById('closeButton2').style.display = 'inline-block';

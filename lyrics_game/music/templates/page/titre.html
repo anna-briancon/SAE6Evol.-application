@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devinez le titre</title>
+    <title>Deviner le titre</title>
     <link rel="stylesheet" href="files/styles_artiste.css">
 
     <style>
@@ -254,8 +254,6 @@
             if (hintTitleIndex < titleHints.length) {
                 document.getElementById('hintTitleText').innerText = "Indice Titre: " + titleHints[hintTitleIndex];
                 hintTitleIndex++;
-            } else {
-                document.getElementById('hintTitleText').innerText = "Aucun autre indice disponible pour le titre.";
             }
         });
 
@@ -265,7 +263,7 @@
         }
 
         function revealAnswer() {
-            document.getElementById('popupMessage').innerText = "La bonne réponse était : " + correctArtist + " - " + correctTitle;
+            document.getElementById('popupMessage').innerText = "La bonne réponse était : " + correctTitle;
             document.getElementById('revealAnswerButton').style.display = 'none';
             document.getElementById('closeButton').style.display = 'none';
             document.getElementById('closeButton2').style.display = 'inline-block';
