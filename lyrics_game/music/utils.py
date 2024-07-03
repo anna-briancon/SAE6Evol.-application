@@ -56,9 +56,7 @@ def get_hidden_lyrics(lyrics: str) -> list[str]:
     return hidden lyrics as list of string
     """
     lyrics = format_lyrics(lyrics)
-    head, hidden_lyrics = lyrics.split('\r', 1)
-    hidden_lyrics = re.sub(r'[a-zA-Z]', '_', hidden_lyrics)
-    hidden_lyrics = head + hidden_lyrics
+    hidden_lyrics = re.sub(r'[a-zA-Z]', '_', lyrics)
     return hidden_lyrics.split(' ')
 
 
