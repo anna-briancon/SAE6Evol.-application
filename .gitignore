@@ -6,7 +6,7 @@
 __pycache__/
 */__pycache__/
 .idea/
-lyrics_game/db.sqlite3
+/lyrics_game/db.sqlite3
 
 venvdjango/*
 
@@ -18,3 +18,12 @@ music/migrations/*
 
 # Ignorer le répertoire static
 static/
+/.idea/.gitignore
+/lyrics_game/music/migrations/0006_delete_quizquestion_artist_songs_delete_song.py
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/SAE6Evol.-application.iml
+/.idea/vcs.xml
+/lyrics_game/music/migrations/

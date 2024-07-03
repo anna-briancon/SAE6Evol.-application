@@ -16,14 +16,29 @@ class Song(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     lyrics = models.TextField()
     answer = models.CharField(max_length=200, blank=True)
+    # string array
+    songs = models.JSONField(default=list)
+
     def __str__(self):
-        return f"{self.title} by {self.artist.name}"
+        return self.name, ' - ', self.songs, ' songs'
 
 
-# artist page
 class ArtistPage(Page):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     content_panels = Page.content_panels + [
         FieldPanel('artist')
     ]
 
+
+class HomePage(Page):
+    buttonGuessTitle = models.CharField(max_length=100, blank=True)
+    buttonGuessArtist = models.CharField(max_length=100, blank=True)
+    buttonGuessLyrics = models.CharField(max_length=100, blank=True)
+    buttonGuessTitleAndArtist = models.CharField(max_length=100, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('buttonGuessTitle'),
+        FieldPanel('buttonGuessArtist'),
+        FieldPanel('buttonGuessLyrics'),
+        FieldPanel('buttonGuessTitleAndArtist')
+    ]
