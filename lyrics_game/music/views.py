@@ -12,7 +12,7 @@ def artiste_view(request):
         'correct_artist': artist_data['artist'],
         'correct_title': artist_data['title']
     }
-    return render(request, 'artiste_page/artiste.html', context)
+    return render(request, 'page/artiste.html', context)
 
 def guess_artist(request):
     if request.method == 'POST':
@@ -46,6 +46,49 @@ def get_hint(request):
                 hint = "Aucun autre indice disponible."
                 hint_index = len(correct_artist)
         elif hint_type == 'title':
+            if hint_index < len(correct_title):
+                hint = correct_title[:hint_index + 1]
+                hint_index += 1
+            else:
+                hint = "Aucun autre indice disponible."
+                hint_index = len(correct_title)
+        
+        return JsonResponse({'hint': hint, 'hint_index': hint_index})
+
+    return JsonResponse({'message': 'Invalid request'}, status=400)
+
+def titre_view(request):
+    artist_data = get_artist()
+    cleaned_lyrics = clean_lyrics2(artist_data['lyrics'])
+    context = {
+        'lyrics': cleaned_lyrics,
+        'correct_artist': artist_data['artist'],
+        'correct_title': artist_data['title']
+    }
+    return render(request, 'page/titre.html', context)
+
+def guess_title(request):
+    if request.method == 'POST':
+        title_guess = request.POST.get('title_guess').strip().lower()
+
+        correct_title = request.POST.get('correct_title').strip().lower()
+        
+        if title_guess == correct_title:
+            message = "Bravo, vous avez deviné correctement !"
+        else:
+            message = "Désolé, ce n'est pas la bonne réponse."
+
+        return JsonResponse({'message': message})
+
+    return JsonResponse({'message': 'Invalid request'}, status=400)
+
+def get_hint_title(request):
+    if request.method == 'GET':
+        correct_title = request.GET.get('correct_title')
+        hint_type = request.GET.get('hint_type')
+        hint_index = int(request.GET.get('hint_index', 0))
+        
+        if hint_type == 'title':
             if hint_index < len(correct_title):
                 hint = correct_title[:hint_index + 1]
                 hint_index += 1
