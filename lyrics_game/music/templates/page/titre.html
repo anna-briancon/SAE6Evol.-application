@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trouver le titre</title>
+    <link rel="stylesheet" href="files/styles_artiste.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            height: 80%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 1% 0;
+        }
+
+        .left-column {
+            flex: 2;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .right-column {
+            flex: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button[type="submit"] {
+            width: 96%;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            background-color: #e6e6e6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: #007bff;
+            color: #e6e6e6;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .hint-button {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .hint-button:hover {
+            background-color: #495057;
+        }
+
+        /* Positionnement des boutons d'indice en bas */
+        .hint-buttons {
+            margin-top: auto; /* Les place en bas du conteneur */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <a class="back-link" href="../../">&lt; Retour à l'accueil</a>
+    <img src="../../../static/logoLQ.png" alt="Artiste" style="width: 10%; margin-top: 1%;">
+    <h1>Trouver le titre de la chanson :</h1>
+    <!-- <p>{{ correct_artist }} : {{ correct_title }}</p> -->
+    <div class="container">
+        <div class="left-column">
+            <p>{{ lyrics }}</p>
+        </div>
+        <div class="right-column">
+            <form id="guessForm" action="{% url 'guess_title' %}" method="post">
+                {% csrf_token %}
+                <p>{{ correct_artist }} </p>
+                <input type="text" name="title_guess" placeholder="Titre de la chanson" required>
+                <input type="hidden" name="correct_title" value="{{ correct_title }}">
+                <button type="submit">Soumettre</button>
+            </form>
+            <p id="hintTitleText"></p>
+            <div class="hint-buttons">
+                <button id="hintTitleButton" class="hint-button">Indice Titre</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="popupOverlay" class="popup-overlay"></div>
+    <div id="popup" class="popup">
+        <p id="popupMessage"></p>
+        <button id="closeButton" onclick="closePopup()">Réessayer</button>
+        <button id="revealAnswerButton" style="display: none;" onclick="revealAnswer()">Afficher la réponse</button>
+        <button id="closeButton2" onclick="retry()">Fermer</button>
+        <button id="retryButton" style="display: none;" onclick="retry()">Recommencer</button>
+    </div>
+
+    <script>
+        let hintTitleIndex = 0;
+        const correctTitle = "{{ correct_title }}";
+        const titleHints = Array.from(correctTitle).map((char, i) => correctTitle.slice(0, i + 1));
+
+        document.getElementById('guessForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            fetch("{% url 'guess_title' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('popupMessage').innerText = data.message;
+
+                if (data.message.includes('Bravo')) {
+                    document.getElementById('retryButton').style.display = 'inline-block';
+                    document.getElementById('revealAnswerButton').style.display = 'none';
+                    document.getElementById('closeButton2').style.display = 'none';
+                    document.getElementById('closeButton').style.display = 'none';
+                } else {
+                    document.getElementById('revealAnswerButton').style.display = 'inline-block';
+                    document.getElementById('retryButton').style.display = 'none';
+                    document.getElementById('closeButton2').style.display = 'none';
+                }
+
+                document.getElementById('popup').style.display = 'inline-block';
+                document.getElementById('popupOverlay').style.display = 'inline-block';
+            });
+        });
+
+        document.getElementById('hintTitleButton').addEventListener('click', function() {
+            if (hintTitleIndex < titleHints.length) {
+                document.getElementById('hintTitleText').innerText = "Indice Titre: " + titleHints[hintTitleIndex];
+                hintTitleIndex++;
+            }
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+
+        function revealAnswer() {
+            document.getElementById('popupMessage').innerText = "La bonne réponse était : " + correctTitle;
+            document.getElementById('revealAnswerButton').style.display = 'none';
+            document.getElementById('closeButton').style.display = 'none';
+            document.getElementById('closeButton2').style.display = 'inline-block';
+        }
+
+        function retry() {
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
