@@ -4,7 +4,7 @@ from wagtail.models import Page
 
 
 class Artist(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     # string array
     songs = models.JSONField(default=list)
 

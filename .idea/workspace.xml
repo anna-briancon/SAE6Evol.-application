@@ -4,16 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fba8a1e9-3550-4245-9751-4edc3231188d" name="Changes" comment="fix migrations">
+    <list default="true" id="fba8a1e9-3550-4245-9751-4edc3231188d" name="Changes" comment="gitignore">
+      <change afterPath="$PROJECT_DIR$/lyrics_game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lyrics_game/api/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lyrics_game/api/filters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lyrics_game/api/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lyrics_game/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SAE6Evol.-application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SAE6Evol.-application.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lyrics_game/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyrics_game/music/migrations/0006_artistepage_chanson_chanteur_delete_quizquestion_and_more 3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lyrics_game/music/templates/music/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/music/templates/music/home_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/lyrics_game/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/lyrics_game/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/lyrics_game/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/lyrics_game/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/music/api.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/music/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/music/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/music/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/music/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/music/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lyrics_game/music/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lyrics_game/music/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -29,12 +49,12 @@
     &quot;assignee&quot;: &quot;Romainub87&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/anna-briancon/SAE6Evol.-application.git&quot;,
-    &quot;accountId&quot;: &quot;51cd72ae-e77a-4a03-b524-a0349ba0277e&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/anna-briancon/SAE6Evol.-application.git",
+    "accountId": "700d457b-fa4f-4331-ba61-2a89affbeea1"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -50,13 +70,33 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "artist__from__models",
+    "last_opened_file_path": "/home/samuel/PycharmProjects/SAE6Evol.-application/lyrics_game/api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lyrics_game/api" />
+      <recent name="$PROJECT_DIR$/lyrics_game/music/api" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lyrics_game" />
+      <recent name="$PROJECT_DIR$/lyrics_game/music/api" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.18034.82" />
+        <option value="bundled-python-sdk-975db3bf15a3-2767605e8bc2-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.18034.82" />
       </set>
     </attachedChunks>
   </component>
@@ -68,6 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719922760986</updated>
+      <workItem from="1720016242947" duration="622000" />
     </task>
     <task id="LOCAL-00001" summary="correctif css homepage">
       <option name="closed" value="true" />
@@ -111,6 +152,9 @@
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="correctif css homepage" />
