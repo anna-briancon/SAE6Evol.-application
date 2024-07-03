@@ -187,7 +187,9 @@
     <!-- <p>{{ correct_artist }} : {{ correct_title }}</p> -->
     <div class="container">
         <div class="left-column">
-            <p>{{ lyrics }}</p>
+            {% for lyric in lyrics %}
+                <p>{{ lyric }}</p>
+            {% endfor %}
         </div>
         <div class="right-column">
             <form id="guessForm" action="{% url 'guess_title' %}" method="post">

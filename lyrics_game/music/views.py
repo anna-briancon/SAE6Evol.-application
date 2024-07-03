@@ -2,11 +2,12 @@
 
 from django.http import JsonResponse
 from django.shortcuts import render
-from .utils import get_artist, clean_lyrics2
+from .utils import get_artist, clean_lyrics2, get_words
 
 def artiste_view(request):
     artist_data = get_artist()
     cleaned_lyrics = clean_lyrics2(artist_data['lyrics'])
+    cleaned_lyrics = get_words(cleaned_lyrics)
     context = {
         'lyrics': cleaned_lyrics,
         'correct_artist': artist_data['artist'],
@@ -60,6 +61,7 @@ def get_hint(request):
 def titre_view(request):
     artist_data = get_artist()
     cleaned_lyrics = clean_lyrics2(artist_data['lyrics'])
+    cleaned_lyrics = get_words(cleaned_lyrics)
     context = {
         'lyrics': cleaned_lyrics,
         'correct_artist': artist_data['artist'],
@@ -103,6 +105,8 @@ def get_hint_title(request):
 def juste_artiste_view(request):
     artist_data = get_artist()
     cleaned_lyrics = clean_lyrics2(artist_data['lyrics'])
+    cleaned_lyrics = get_words(cleaned_lyrics)
+
     context = {
         'lyrics': cleaned_lyrics,
         'correct_artist': artist_data['artist'],

@@ -45,8 +45,8 @@ def get_words(lyrics: str) -> list[str]:
 
     return lyrics as list of string
     """
-    lyrics = format_lyrics(lyrics)
-    return lyrics.split(' ')
+    #lyrics = format_lyrics(lyrics)
+    return lyrics.split('\n')
 
 
 def get_hidden_lyrics(lyrics: str) -> list[str]:
@@ -82,12 +82,8 @@ def format_lyrics(lyrics: str) -> str:
 
     return formated lyrics as string
     """
-    lyrics = lyrics.replace('\r', ' \r').replace('\n', ' \n ').replace("'", "' ").replace(',', ' ,').replace('?',
-                                                                                                             ' ?').replace(
-        '!', ' !').replace('!', ' !')
-    lyrics = lyrics.replace("'", "' ").replace(',', ' ,').replace('?', ' ?').replace('!', ' !').replace('!',
-                                                                                                        ' !').replace(
-        '(', '( ').replace(')', ' )')
+    lyrics = lyrics.replace('\r', ' \r').replace('\n', ' \n ').replace("'", "' ").replace(',', ' ,').replace('?',' ?').replace('!', ' !').replace('!', ' !')
+    lyrics = lyrics.replace("'", "' ").replace(',', ' ,').replace('?', ' ?').replace('!', ' !').replace('!',' !').replace('(', '( ').replace(')', ' )')
     return lyrics
 
 
