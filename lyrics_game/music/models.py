@@ -9,7 +9,7 @@ class Artist(models.Model):
     songs = models.JSONField(default=list)
 
     def __str__(self):
-        return self.name + ' - ' + str(len(self.songs)) + ' songs'
+        return self.name, ' - ', self.songs, ' songs'
 
 
 class ArtistPage(Page):
