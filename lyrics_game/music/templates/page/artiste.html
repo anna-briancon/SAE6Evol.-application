@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devinez l'artiste</title>
+    <title>Trouver l'artiste et le titre</title>
     <link rel="stylesheet" href="files/styles_artiste.css">
 
     <style>
@@ -183,8 +183,7 @@
 <body>
     <a class="back-link" href="../../">&lt; Retour à l'accueil</a>
     <img src="../../../static/logoLQ.png" alt="Artiste" style="width: 10%; margin-top: 1%;">
-    <h1>Devinez l'artiste et le titre de la chanson :</h1>
-    <!-- <p>{{ correct_artist }} : {{ correct_title }}</p> -->
+    <h1>Trouver l'artiste et le titre de la chanson :</h1>
     <div class="container">
         <div class="left-column">
             <p>{{ lyrics }}</p>
@@ -260,8 +259,6 @@
             if (hintArtistIndex < artistHints.length) {
                 document.getElementById('hintArtistText').innerText = "Indice Artiste: " + artistHints[hintArtistIndex];
                 hintArtistIndex++;
-            } else {
-                document.getElementById('hintArtistText').innerText = "Aucun autre indice disponible pour l'artiste.";
             }
         });
 
@@ -269,8 +266,6 @@
             if (hintTitleIndex < titleHints.length) {
                 document.getElementById('hintTitleText').innerText = "Indice Titre: " + titleHints[hintTitleIndex];
                 hintTitleIndex++;
-            } else {
-                document.getElementById('hintTitleText').innerText = "Aucun autre indice disponible pour le titre.";
             }
         });
 
