@@ -4,5 +4,17 @@
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*/__pycache__/
+.idea/
+lyrics_game/db.sqlite3
 
 venvdjango/*
+
+# Ignorer les fichiers .DS_Store générés par macOS
+.DS_Store
+
+# Ignorer les migrations de Django
+music/migrations/*
+
+# Ignorer le répertoire static
+static/
