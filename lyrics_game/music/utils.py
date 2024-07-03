@@ -45,8 +45,8 @@ def get_words(lyrics: str) -> list[str]:
 
     return lyrics as list of string
     """
-    lyrics = format_lyrics(lyrics)
-    return lyrics.split(' ')
+    #lyrics = format_lyrics(lyrics)
+    return lyrics.split('\n')
 
 
 def get_hidden_lyrics(lyrics: str) -> list[str]:
@@ -56,9 +56,7 @@ def get_hidden_lyrics(lyrics: str) -> list[str]:
     return hidden lyrics as list of string
     """
     lyrics = format_lyrics(lyrics)
-    head, hidden_lyrics = lyrics.split('\r', 1)
-    hidden_lyrics = re.sub(r'[a-zA-Z]', '_', hidden_lyrics)
-    hidden_lyrics = head + hidden_lyrics
+    hidden_lyrics = re.sub(r'[a-zA-Z]', '_', lyrics)
     return hidden_lyrics.split(' ')
 
 
@@ -84,12 +82,8 @@ def format_lyrics(lyrics: str) -> str:
 
     return formated lyrics as string
     """
-    lyrics = lyrics.replace('\r', ' \r').replace('\n', ' \n ').replace("'", "' ").replace(',', ' ,').replace('?',
-                                                                                                             ' ?').replace(
-        '!', ' !').replace('!', ' !')
-    lyrics = lyrics.replace("'", "' ").replace(',', ' ,').replace('?', ' ?').replace('!', ' !').replace('!',
-                                                                                                        ' !').replace(
-        '(', '( ').replace(')', ' )')
+    lyrics = lyrics.replace('\r', ' \r').replace('\n', ' \n ').replace("'", "' ").replace(',', ' ,').replace('?',' ?').replace('!', ' !').replace('!', ' !')
+    lyrics = lyrics.replace("'", "' ").replace(',', ' ,').replace('?', ' ?').replace('!', ' !').replace('!',' !').replace('(', '( ').replace(')', ' )')
     return lyrics
 
 

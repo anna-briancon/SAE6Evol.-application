@@ -186,7 +186,9 @@
     <h1>Trouver l'artiste et le titre de la chanson :</h1>
     <div class="container">
         <div class="left-column">
-            <p>{{ lyrics }}</p>
+            {% for lyric in lyrics %}
+                <p>{{ lyric }}</p>
+            {% endfor %}
         </div>
         <div class="right-column">
             <form id="guessForm" action="{% url 'guess_artist' %}" method="post">
