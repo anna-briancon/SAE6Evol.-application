@@ -60,6 +60,17 @@ def format(lyrics: str) -> str:
     lyrics = lyrics.replace("'","' ").replace(',',' ,').replace('?',' ?').replace('!',' !').replace('!',' !').replace('(','( ').replace(')',' )')
     return lyrics
 
+def is_word_in_lyrics(word: str, dict_lyrics: dict[str,list[int]]) -> None | list[int]:
+    '''
+    Check if word is in dictionary
+
+    return every index of word or None if not in dictionary
+    '''
+    if word in dict_lyrics.keys():
+        return dict_lyrics[word]
+    else:
+        return None
+
 def get_artist() -> str:
     '''
     choose a random song 
@@ -71,7 +82,7 @@ def get_artist() -> str:
     # Lire le fichier JSON
     with open(fichier_json, 'r', encoding='utf-8') as file:
         data = json.load(file)
-        
+
     chanteur_aleatoire = random.choice(data )
     chanteur_modifiee = chanteur_aleatoire['name'].replace(" ", "%")
 
