@@ -44,7 +44,8 @@
         h1 {
             color: #e6e6e6;
             font-size: 3em;
-            margin: 0 10%;
+            margin: 2% 0;
+            text-shadow: 2px 2px 4px #000000;
         }
 
         p {
@@ -60,6 +61,9 @@
             background-color: #e6e6e6;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
+            width: 260px; 
+            display: inline-block;
+            text-align: center; /
         }
 
         a:hover {
@@ -73,7 +77,7 @@
 <body>
     <div class="container">
         <div class="cover">
-            <img src="{% static 'logoLQ.png' %}" style="width: 18%; position: absolute; margin-bottom: 35%;" alt="LyriQuest">
+            <img src="{% static 'logoLQ.png' %}" style="width: 13%; position: absolute; margin-bottom: 35%;" alt="LyriQuest">
             {% block content %}
             <h1>{{ page.game }}</h1>
             <p><a href="/music/titre/">Trouver le titre  ⭐ </a></p>
