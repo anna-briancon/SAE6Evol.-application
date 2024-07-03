@@ -6,7 +6,7 @@
 __pycache__/
 */__pycache__/
 .idea/
-lyrics_game/db.sqlite3
+
 
 venvdjango/*
 
@@ -26,3 +26,4 @@ static/
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/SAE6Evol.-application.iml
 /.idea/vcs.xml
+/lyrics_game/music/migrations/
