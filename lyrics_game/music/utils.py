@@ -41,7 +41,9 @@ def get_hidden_lyrics(lyrics: str) -> list[str]:
     return hidden lyrics as list of string
     '''
     lyrics = format(lyrics)
-    hidden_lyrics = re.sub(r'[a-zA-Z]','_',lyrics)
+    head,hidden_lyrics = lyrics.split('\r',1)
+    hidden_lyrics = re.sub(r'[a-zA-Z]','_',hidden_lyrics)
+    hidden_lyrics = head + hidden_lyrics
     return hidden_lyrics.split(' ')
 
 def map_mord(split_lyrics : list[str]) -> dict[str,list[int]]:
