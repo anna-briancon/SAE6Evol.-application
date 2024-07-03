@@ -13,5 +13,5 @@ venvdjango/*
 # Ignorer les migrations de Django
 music/migrations/*
 
-# Ignorer le répertoire static
-static/
+lyrics_game/db.sqlite3
+
