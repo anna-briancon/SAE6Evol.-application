@@ -1,8 +1,11 @@
 import json
 import random
+from typing import Tuple, Any
+
 import requests
 import re
-from models import Artist, Song
+import string
+from .models import Artist, Song
 
 
 def get_lyrics(artist: str, song: str) -> str:
@@ -27,6 +30,38 @@ def get_words(lyrics: str) -> list[str]:
     lyrics = format(lyrics)
     return lyrics.split(' ')
 
+def is_valid_string(s):
+    special_characters = string.punctuation + string.whitespace
+    return s and not all(char in special_characters for char in s)
+
+
+def remove_random_word(lyrics: str) -> (str, str):
+    array_of_strings = lyrics.split(' ')
+
+    while True:
+        random_index = random.randint(0, len(array_of_strings) - 1)
+        random_word = array_of_strings[random_index].strip(string.punctuation)
+        if random_word and not all(char in string.punctuation for char in random_word):
+            break
+
+        # Replace the selected word with underscores in the original array
+    array_of_strings[random_index] = array_of_strings[random_index].replace(random_word, '_' * len(random_word))
+
+    # Get 15 words before and after the selected word
+    start_index = max(0, random_index - 15)
+    end_index = min(len(array_of_strings), random_index + 16)
+    surrounding_words_with_special_chars = array_of_strings[start_index:end_index]
+
+    # Transform the surrounding words into a string with whitespace and add <br> every five words
+    surrounding_words_string = ''
+    for i, word in enumerate(surrounding_words_with_special_chars):
+        if i > 0 and i % 5 == 0:
+            surrounding_words_string += '<br>'
+        surrounding_words_string += word + ' '
+
+    surrounding_words_string = surrounding_words_string.strip()
+
+    return random_word, surrounding_words_string
 
 def get_hidden_lyrics(lyrics: str) -> list[str]:
     """
@@ -81,14 +116,13 @@ def is_word_in_lyrics(word: str, dict_lyrics: dict[str, list[int]]) -> None | li
     else:
         return None
 
-
-def get_artist() -> str:
+def get_artist() -> tuple[str, Any, Any]:
     """
     choose a random song
 
     return song lyrics as string
     """
-    fichier_json = './../../chanteurs.json'
+    fichier_json = './../chanteurs.json'
 
     # Lire le fichier JSON
     with open(fichier_json, 'r', encoding='utf-8') as file:
@@ -96,8 +130,21 @@ def get_artist() -> str:
 
     chanteur_aleatoire = random.choice(data)
     chanteur_modifiee = chanteur_aleatoire['name'].replace(" ", "%")
-
+    chanteur_aleatoire_name = chanteur_aleatoire['name']
     # Afficher le contenu du fichier JSON
     chanson_aleatoire = random.choice(chanteur_aleatoire['songs'])
     chaine_modifiee = chanson_aleatoire.replace(" ", "%")
-    return get_lyrics(chanteur_modifiee, chaine_modifiee)
+    return get_lyrics(chanteur_modifiee, chaine_modifiee), chanteur_aleatoire_name, chanson_aleatoire
+
+
+def process_lyrics(lyrics: str):
+    words = lyrics.split()
+    processed_lyrics = ['_' * len(word.strip(string.punctuation)) if word.strip(string.punctuation) else word for word in words]
+    print("coucou")
+    return words, processed_lyrics
+
+def reveal_word(words, processed_lyrics, guess):
+    for i, word in enumerate(words):
+        if word.strip(string.punctuation).lower() == guess.lower():
+            processed_lyrics[i] = word
+    return processed_lyrics

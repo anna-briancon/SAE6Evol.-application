@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('artist/', views.artist_quiz, name='artist'),
     path('lyrics/', views.lyrics_quiz, name='lyrics'),
+    path('lyrics-game/', views.lyrics_game_view, name='lyrics_game'),
+
 ]
