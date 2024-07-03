@@ -1,5 +1,4 @@
 {% load static wagtailuserbar wagtailimages_tags wagtailcore_tags %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,10 +73,12 @@
 <body>
     <div class="container">
         <div class="cover">
+            <img src="{% static 'logoLQ.png' %}" style="width: 18%; position: absolute; margin-bottom: 25%;" alt="LyriQuest">
             {% block content %}
-            <h1>{{ page.game }}</h1>
-            <p><a>{{ page.button1 }}</a></p>
-            <p><a>{{ page.button2 }}</a></p>
+            <p><a href="/music/titre">{{ page.buttonGuessTitle }}</a></p>
+            <p><a href="/music/juste_artiste/">{{ page.buttonGuessArtist }}</a></p>
+            <p><a>{{ page.buttonGuessLyrics }}</a></p>
+            <p><a href="/music/artiste/">{{ page.buttonGuessTitleAndArtist }}</a></p>
             {% endblock %}
         </div>
     </div>

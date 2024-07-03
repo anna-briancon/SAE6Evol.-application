@@ -21,7 +21,15 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from music.api import ArtistViewSet
+
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'artist', ArtistViewSet)
+
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
