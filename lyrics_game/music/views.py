@@ -12,6 +12,7 @@ from .utils import process_lyrics, reveal_word
 from .forms import LyricsForm
 
 
+
 def artiste_view(request):
     artist_data = get_artist()
     cleaned_lyrics = clean_lyrics2(artist_data['lyrics'])
@@ -170,6 +171,7 @@ def titre_view(request):
     }
     return render(request, 'page/titre.html', context)
 
+
 def guess_title(request):
     if request.method == 'POST':
         title_guess = request.POST.get('title_guess').strip().lower()
@@ -184,6 +186,7 @@ def guess_title(request):
         return JsonResponse({'message': message})
 
     return JsonResponse({'message': 'Invalid request'}, status=400)
+
 
 def get_hint_title(request):
     if request.method == 'GET':
@@ -203,6 +206,7 @@ def get_hint_title(request):
 
     return JsonResponse({'message': 'Invalid request'}, status=400)
 
+
 def juste_artiste_view(request):
     artist_data = get_artist()
     cleaned_lyrics = clean_lyrics2(artist_data['lyrics'])
@@ -214,6 +218,7 @@ def juste_artiste_view(request):
         'correct_title': artist_data['title']
     }
     return render(request, 'page/juste_artiste.html', context)
+
 
 def guess_juste_artiste(request):
     if request.method == 'POST':
@@ -229,6 +234,7 @@ def guess_juste_artiste(request):
         return JsonResponse({'message': message})
 
     return JsonResponse({'message': 'Invalid request'}, status=400)
+
 
 def get_hint_juste_artiste(request):
     if request.method == 'GET':
