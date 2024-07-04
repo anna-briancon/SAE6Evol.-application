@@ -215,7 +215,7 @@ def lyrics_game_view(request):
             del request.session['processed_lyrics']
             del request.session['singer']
             del request.session['song_name']
-        return redirect('lyrics_game')
+        return redirect('lyrics_game') 
 
     singer = None
     song_name = None
