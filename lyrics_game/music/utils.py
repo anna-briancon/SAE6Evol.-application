@@ -6,6 +6,7 @@ from .models import Artist
 import string
 from typing import Tuple, Any
 
+
 def get_lyrics(artist, title):
     """
     Call API to get song lyrics
@@ -131,7 +132,7 @@ def remove_random_word(lyrics: str) -> (str, str):
 
         # Replace the selected word with underscores in the original array
     array_of_strings[random_index] = array_of_strings[random_index].replace(random_word, '_' * len(random_word))
-    
+
     # Transform the surrounding words into a string with whitespace and add <br> every five words
     surrounding_words_string = ''
     for i, word in enumerate(array_of_strings):
