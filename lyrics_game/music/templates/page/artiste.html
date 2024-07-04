@@ -127,7 +127,7 @@
             z-index: 1000;
         }
 
-        .popup button {
+        .popup button, #newGameButton {
             margin-top: 10px;
             padding: 10px 20px;
             background-color: #007bff;
@@ -139,7 +139,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .popup button:hover {
+        .popup button:hover,  #newGameButton:hover {
             background-color: #0056b3;
         }
 
@@ -205,7 +205,7 @@
                 <button id="hintArtistButton" class="hint-button">Indice Artiste</button>
                 <button id="hintTitleButton" class="hint-button">Indice Titre</button>
             </div>
-
+            <button id="newGameButton" onclick="retry()">Nouvelle partie</button>
         </div>
     </div>
 
@@ -286,6 +286,7 @@
         function retry() {
             window.location.reload();
         }
+
     </script>
 </body>
 </html>

@@ -127,7 +127,7 @@
             z-index: 1000;
         }
 
-        .popup button {
+        .popup button, #newGameButton {
             margin-top: 10px;
             padding: 10px 20px;
             background-color: #007bff;
@@ -139,7 +139,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .popup button:hover {
+        .popup button:hover,  #newGameButton:hover {
             background-color: #0056b3;
         }
 
@@ -171,9 +171,8 @@
             background-color: #495057;
         }
 
-        /* Positionnement des boutons d'indice en bas */
         .hint-buttons {
-            margin-top: auto; /* Les place en bas du conteneur */
+            margin-top: auto; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -203,7 +202,7 @@
             <div class="hint-buttons">
                 <button id="hintTitleButton" class="hint-button">Indice Titre</button>
             </div>
-
+            <button id="newGameButton" onclick="retry()">Nouvelle partie</button>
         </div>
     </div>
 
