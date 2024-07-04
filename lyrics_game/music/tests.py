@@ -1,8 +1,6 @@
 from django.test import TestCase  
-from music.models import Artist
-from django.urls import reverse
 from rest_framework import status
-
+from music.models import Artist
 from api.serializers import ArtistSerializer
 
 # tests sur les objets Artist
