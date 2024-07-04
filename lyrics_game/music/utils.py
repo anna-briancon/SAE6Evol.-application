@@ -131,17 +131,10 @@ def remove_random_word(lyrics: str) -> (str, str):
 
         # Replace the selected word with underscores in the original array
     array_of_strings[random_index] = array_of_strings[random_index].replace(random_word, '_' * len(random_word))
-
-    # Get 15 words before and after the selected word
-    start_index = max(0, random_index - 15)
-    end_index = min(len(array_of_strings), random_index + 16)
-    surrounding_words_with_special_chars = array_of_strings[start_index:end_index]
-
+    
     # Transform the surrounding words into a string with whitespace and add <br> every five words
     surrounding_words_string = ''
-    for i, word in enumerate(surrounding_words_with_special_chars):
-        if i > 0 and i % 5 == 0:
-            surrounding_words_string += '<br>'
+    for i, word in enumerate(array_of_strings):
         surrounding_words_string += word + ' '
 
     surrounding_words_string = surrounding_words_string.strip()
@@ -206,35 +199,28 @@ def get_artist() -> tuple[str, Any, Any]:
     if not artists.exists():
         raise ValueError("No artists found in the database")
 
-    random_artist = random.choice(artists)
+    while True:
+        random_artist = random.choice(artists)
 
-    random_song = random.choice(random_artist.songs)
-    lyrics = get_lyrics(random_artist.name, random_song)
+        random_song = random.choice(random_artist.songs)
+        lyrics = get_lyrics(random_artist.name, random_song)
 
-    if lyrics:
-        cleaned_lyrics = clean_lyrics(lyrics, random_song)
+        if lyrics:
+            cleaned_lyrics = clean_lyrics(lyrics, random_song)
 
-        return {
-            'artist': random_artist.name,
-            'title': random_song.title,
-            'lyrics': cleaned_lyrics
-        }
-    else:
-        raise ValueError(f"Lyrics not found for song {random_song} by artist {random_artist.name}")
+            return {
+                'artist': random_artist.name,
+                'title': random_song.title,
+                'lyrics': cleaned_lyrics
+            }
 
 
 def load_artists() -> str:
     """
     Load data from json file to database
-    """
-    chanteur_aleatoire = random.choice(data)
-    chanteur_modifiee = chanteur_aleatoire['name'].replace(" ", "%")
-    chanteur_aleatoire_name = chanteur_aleatoire['name']
-    # Afficher le contenu du fichier JSON
-    chanson_aleatoire = random.choice(chanteur_aleatoire['songs'])
-    chaine_modifiee = chanson_aleatoire.replace(" ", "%")
-    return get_lyrics(chanteur_modifiee, chaine_modifiee), chanteur_aleatoire_name, chanson_aleatoire
 
+    return confirmation message
+    """
     json_file = './../artists.json'
 
     with open(json_file, 'r', encoding='utf-8') as file:
