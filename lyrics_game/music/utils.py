@@ -2,7 +2,7 @@ import json
 import random
 import requests
 import re
-from .models import Artist
+from music.models import Artist
 
 
 def get_lyrics(artist, title):
