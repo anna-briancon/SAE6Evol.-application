@@ -210,7 +210,7 @@ def get_artist() -> tuple[str, Any, Any]:
 
             return {
                 'artist': random_artist.name,
-                'title': random_song.title,
+                'title': random_song,
                 'lyrics': cleaned_lyrics
             }
 
@@ -239,7 +239,6 @@ def load_artists() -> str:
 def process_lyrics(lyrics: str):
     words = lyrics.split()
     processed_lyrics = ['_' * len(word.strip(string.punctuation)) if word.strip(string.punctuation) else word for word in words]
-    print("coucou")
     return words, processed_lyrics
 
 def reveal_word(words, processed_lyrics, guess):

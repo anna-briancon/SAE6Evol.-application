@@ -207,34 +207,38 @@ def lyrics_quiz(request):
         'song_name': song_name
     })
 
+
 def lyrics_game_view(request):
     if 'change_song' in request.POST:
-        if 'song' in request.session:
-            del request.session['song']
+        if 'song_name' in request.session:
             del request.session['words']
             del request.session['processed_lyrics']
-        return redirect('lyrics_game')
+            del request.session['singer']
+            del request.session['song_name']
+        return redirect('lyrics_game') 
+
     singer = None
     song_name = None
     lyrics = None
-    if 'song' not in request.session:
+
+    if 'song_name' not in request.session:
         while lyrics is None:
             information = get_artist()
             lyrics = information['lyrics']
             singer = information['artist']
-            song_name = information['title'] # This function should fetch the song lyrics
-        request.session['song'] = lyrics
+            song_name = information['title']
+        
         words, processed_lyrics = process_lyrics(lyrics)
         request.session['words'] = words
         request.session['processed_lyrics'] = processed_lyrics
-        request.session['singer'] = singer
+        request.session['singer'] = str(singer)
         request.session['song_name'] = song_name
     else:
-        lyrics = request.session['song']
-        singer = request.session['singer'] if 'singer' in request.session else None
-        song_name = request.session['song_name'] if 'song_name' in request.session else None
+        singer = request.session['singer']
+        song_name = request.session['song_name']
         words = request.session['words']
         processed_lyrics = request.session['processed_lyrics']
+
     win = False
     if request.method == 'POST':
         form = LyricsGameForm(request.POST)
@@ -246,11 +250,14 @@ def lyrics_game_view(request):
                 win = True
     else:
         form = LyricsGameForm()
+
     context = {
         'form': form,
         'processed_lyrics': ' '.join(processed_lyrics),
         'singer': singer,
         'song_name': song_name,
-        'win': win
+        'win': win,
+        'words': words,
     }
+
     return render(request, 'page/lyrics_game.html', context)
