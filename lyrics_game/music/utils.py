@@ -4,7 +4,7 @@ import requests
 import re
 from .models import Artist
 import string
-from typing import Tuple, Any
+from typing import Any
 
 
 def get_lyrics(artist, title):
@@ -47,7 +47,6 @@ def get_words(lyrics: str) -> list[str]:
 
     return lyrics as list of string
     """
-    #lyrics = format_lyrics(lyrics)
     return lyrics.split('\n')
 
 
@@ -62,65 +61,21 @@ def get_hidden_lyrics(lyrics: str) -> list[str]:
     return hidden_lyrics.split(' ')
 
 
-def map_mord(split_lyrics: list[str]) -> dict[str, list[int]]:
-    """
-    Create dictionary with word as string as key and the index of each iteration of the word
-
-    return dictionary with string as key and list of integer as value
-    """
-    lyrics_dict = {}
-    for index in range(len(split_lyrics)):
-        if split_lyrics[index].lower() != '\r' and split_lyrics[index].lower() != '\n':
-            if split_lyrics[index].lower() in lyrics_dict.keys():
-                lyrics_dict[split_lyrics[index].lower()].append(index)
-            else:
-                lyrics_dict[split_lyrics[index].lower()] = [index]
-    return lyrics_dict
-
-
 def format_lyrics(lyrics: str) -> str:
     """
     Format lyrics
 
     return formated lyrics as string
     """
-    lyrics = lyrics.replace('\r', ' \r').replace('\n', ' \n ').replace("'", "' ").replace(',', ' ,').replace('?',' ?').replace('!', ' !').replace('!', ' !')
-    lyrics = lyrics.replace("'", "' ").replace(',', ' ,').replace('?', ' ?').replace('!', ' !').replace('!',' !').replace('(', '( ').replace(')', ' )')
+    lyrics = lyrics.replace('\r', ' \r').replace('\n', ' \n ').replace("'", "' ").replace(',', ' ,').replace('?',
+                                                                                                             ' ?').replace(
+        '!', ' !').replace('!', ' !')
+    lyrics = lyrics.replace("'", "' ").replace(',', ' ,').replace('?', ' ?').replace('!', ' !').replace('!',
+                                                                                                        ' !').replace(
+        '(', '( ').replace(')', ' )')
     return lyrics
 
 
-def is_word_in_lyrics(word: str, dict_lyrics: dict[str, list[int]]) -> None | list[int]:
-    """
-    Check if word is in dictionary
-
-    return every index of word or None if not in dictionary
-    """
-    if word in dict_lyrics.keys():
-        return dict_lyrics[word]
-    else:
-        return None
-
-def load_artists() -> str:
-    """
-    Load data from json file to database
-
-    return confirmation message
-    """
-    json_file = './../artists.json'
-
-    with open(json_file, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-
-    artists = Artist.objects.all()
-    if artists.exists():
-        artists.delete()
-
-    for artist in data:
-        new_artist = Artist(name=artist['name'], songs=artist['songs'])
-        new_artist.save()
-
-    return 'Data loaded successfully.'
-# ################
 def remove_random_word(lyrics: str) -> (str, str):
     array_of_strings = lyrics.split(' ')
 
@@ -142,16 +97,6 @@ def remove_random_word(lyrics: str) -> (str, str):
 
     return random_word, surrounding_words_string
 
-def get_hidden_lyrics(lyrics: str) -> list[str]:
-    """
-    Create hidden lyrics
-
-    return hidden lyrics as list of string
-    """
-    lyrics = format_lyrics(lyrics)
-    hidden_lyrics = re.sub(r'[a-zA-Z]', '_', lyrics)
-    return hidden_lyrics.split(' ')
-
 
 def map_mord(split_lyrics: list[str]) -> dict[str, list[int]]:
     """
@@ -169,16 +114,6 @@ def map_mord(split_lyrics: list[str]) -> dict[str, list[int]]:
     return lyrics_dict
 
 
-def format(lyrics: str) -> str:
-    """
-    Format lyrics
-    return formated lyrics as string
-    """
-    lyrics = lyrics.replace('\r', ' \r').replace('\n', ' \n ').replace("'", "' ").replace(',', ' ,').replace('?',' ?').replace('!', ' !').replace('!', ' !')
-    lyrics = lyrics.replace("'", "' ").replace(',', ' ,').replace('?', ' ?').replace('!', ' !').replace('!',' !').replace('(', '( ').replace(')', ' )')
-    return lyrics
-
-
 def is_word_in_lyrics(word: str, dict_lyrics: dict[str, list[int]]) -> None | list[int]:
     """
     Check if word is in dictionary
@@ -190,7 +125,8 @@ def is_word_in_lyrics(word: str, dict_lyrics: dict[str, list[int]]) -> None | li
     else:
         return None
 
-def get_artist() -> tuple[str, Any, Any]:
+
+def get_artist() -> dict[str, str | Any]:
     """
     Get random artist and song from database
 
@@ -237,10 +173,13 @@ def load_artists() -> str:
 
     return 'Data loaded successfully.'
 
+
 def process_lyrics(lyrics: str):
     words = lyrics.split()
-    processed_lyrics = ['_' * len(word.strip(string.punctuation)) if word.strip(string.punctuation) else word for word in words]
+    processed_lyrics = ['_' * len(word.strip(string.punctuation)) if word.strip(string.punctuation) else word for word
+                        in words]
     return words, processed_lyrics
+
 
 def reveal_word(words, processed_lyrics, guess):
     for i, word in enumerate(words):
