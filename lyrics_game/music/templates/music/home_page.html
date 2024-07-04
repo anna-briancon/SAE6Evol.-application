@@ -13,26 +13,40 @@
             background-color: #f0f0f0;
             margin: 0;
             padding: 0;
-            height:100vh;
+            height: 100vh;
             width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url("{% static 'fond.jpg' %}");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
+            filter: blur(3px);
+            z-index: -1;
         }
 
         .cover {
             background-color: rgba(0, 0, 0, 0.578);
-            width:100%;
-            height:100%;
+            width: 100%;
+            height: 100%;
             border-radius: 5px;
-            align-items: center;
             display: flex;
             justify-content: center;
             flex-direction: column;
+            align-items: center;
+            position: relative;
         }
 
         .container {
@@ -53,18 +67,21 @@
 
         a {
             text-decoration: none;
-            color: #007bff;
+            color: #525252;
             font-weight: bold;
             padding: 0.5em 1em;
-            border: 2px solid #007bff;
+            border: 2px solid #525252;
             background-color: #e6e6e6;
-            border-radius: 5px;
+            border-radius: 15px;
             transition: background-color 0.3s, color 0.3s;
+            width: 300px;
+            display: block;
+            margin: 0 auto;
         }
 
         a:hover {
-            background-color: #007bff;
-            color: #e6e6e6;
+            color: #007bff;
+            border: 2px solid #007bff;
             cursor: pointer;
         }
     </style>
@@ -73,12 +90,13 @@
 <body>
     <div class="container">
         <div class="cover">
-            <img src="{% static 'logoLQ.png' %}" style="width: 18%; position: absolute; margin-bottom: 25%;" alt="LyriQuest">
+            <img src="{% static 'logoLQ.png' %}" style="width: 16%; position: absolute; margin-bottom: 35%;" alt="LyriQuest">
             {% block content %}
             <p><a href="/music/titre">{{ page.buttonGuessTitle }}</a></p>
             <p><a href="/music/juste_artiste/">{{ page.buttonGuessArtist }}</a></p>
-            <p><a>{{ page.buttonGuessLyrics }}</a></p>
+            <p><a href="/music/lyrics/">{{ page.buttonGuessLyrics }}</a></p>
             <p><a href="/music/artiste/">{{ page.buttonGuessTitleAndArtist }}</a></p>
+            <p><a href="/music/lyrics_game/">Trouver les paroles ⭐⭐⭐</a></p>
             {% endblock %}
         </div>
     </div>

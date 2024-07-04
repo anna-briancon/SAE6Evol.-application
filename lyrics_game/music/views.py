@@ -1,9 +1,10 @@
 # views.py
 
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .utils import get_artist, clean_lyrics2, get_words
-
+from .utils import get_artist, remove_random_word, process_lyrics, reveal_word
+from .forms import LyricsForm, LyricsGameForm
 
 def artiste_view(request):
     artist_data = get_artist()
@@ -155,3 +156,93 @@ def get_hint_juste_artiste(request):
         return JsonResponse({'hint': hint, 'hint_index': hint_index})
 
     return JsonResponse({'message': 'Invalid request'}, status=400)
+
+def lyrics_quiz(request):
+    while True:
+        information = get_artist()
+        lyrics = information['lyrics']
+        singer = information['artist']
+        song_name = information['title']
+        if lyrics is not None and len(lyrics) > 0:
+            break
+
+    if request.method == 'POST':
+        form = LyricsForm(request.POST)
+        if form.is_valid():
+            user_input = form.cleaned_data['user_input']
+            answer = form.cleaned_data['random_word']
+            if user_input.strip().lower() == answer.lower():
+                result = 'Correct!'
+                result_color = 'green'
+            else:
+                result = 'Réessayer!'
+                result_color = 'red'
+            words_around = form.cleaned_data['words_around']
+        else:
+            result = ''
+            result_color = ''
+            words_around = ""
+            answer = ""
+    else:
+        answer, words_around = remove_random_word(lyrics)
+        form = LyricsForm(initial={'random_word': answer, 'words_around': words_around})
+        result = ''
+        result_color = ''
+
+    return render(request, 'page/complete_lyrics.html', {
+        'form': form,
+        'lyrics': words_around,
+        'result': result,
+        'result_color': result_color,
+        'answer': answer,
+        'singer': singer,
+        'song_name': song_name
+    })
+
+def lyrics_game_view(request):
+    if 'change_song' in request.POST:
+        if 'song' in request.session:
+            del request.session['song']
+            del request.session['words']
+            del request.session['processed_lyrics']
+        return redirect('lyrics_game')
+    singer = None
+    song_name = None
+    lyrics = None
+    if 'song' not in request.session:
+        while lyrics is None:
+            information = get_artist()
+            lyrics = information['lyrics']
+            singer = information['artist']
+            song_name = information['title'] # This function should fetch the song lyrics
+        request.session['song'] = lyrics
+        words, processed_lyrics = process_lyrics(lyrics)
+        request.session['words'] = words
+        request.session['processed_lyrics'] = processed_lyrics
+        request.session['singer'] = singer
+        request.session['song_name'] = song_name
+    else:
+        lyrics = request.session['song']
+        singer = request.session['singer'] if 'singer' in request.session else None
+        song_name = request.session['song_name'] if 'song_name' in request.session else None
+        words = request.session['words']
+        processed_lyrics = request.session['processed_lyrics']
+    win = False
+    if request.method == 'POST':
+        form = LyricsGameForm(request.POST)
+        if form.is_valid():
+            guess = form.cleaned_data['user_input']
+            processed_lyrics = reveal_word(words, processed_lyrics, guess)
+            request.session['processed_lyrics'] = processed_lyrics
+            if '_' not in processed_lyrics:
+                win = True
+    else:
+        form = LyricsGameForm()
+    context = {
+        'form': form,
+        'processed_lyrics': ' '.join(processed_lyrics),
+        'singer': singer,
+        'song_name': song_name,
+        'win': win
+    }
+    return render(request, 'page/lyrics_game.html', context)
