@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from .utils import get_artist, clean_lyrics2, get_words
 from .utils import get_artist, remove_random_word, process_lyrics, reveal_word
 from .forms import LyricsForm, LyricsGameForm
+old_singer =""
+old_song_name = ""
 
 def artiste_view(request):
     artist_data = get_artist()
@@ -158,6 +160,8 @@ def get_hint_juste_artiste(request):
     return JsonResponse({'message': 'Invalid request'}, status=400)
 
 def lyrics_quiz(request):
+    global old_singer
+    global old_song_name
     while True:
         information = get_artist()
         lyrics = information['lyrics']
@@ -172,18 +176,22 @@ def lyrics_quiz(request):
             user_input = form.cleaned_data['user_input']
             answer = form.cleaned_data['random_word']
             if user_input.strip().lower() == answer.lower():
-                result = 'Correct!'
+                result = 'Bravo, vous avez deviné correctement !'
                 result_color = 'green'
             else:
-                result = 'Réessayer!'
+                result = "Désolé, ce n'est pas la bonne réponse."
                 result_color = 'red'
             words_around = form.cleaned_data['words_around']
+            singer = old_singer
+            song_name = old_song_name
         else:
             result = ''
             result_color = ''
             words_around = ""
             answer = ""
     else:
+        old_singer = singer
+        old_song_name = song_name
         answer, words_around = remove_random_word(lyrics)
         form = LyricsForm(initial={'random_word': answer, 'words_around': words_around})
         result = ''
