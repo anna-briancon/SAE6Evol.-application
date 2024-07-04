@@ -1,6 +1,6 @@
 # SAE6Evol.-application
 
-### API
+## API
 
 #### Récupérer tous les artistes
 > http://localhost:8000/api/artist
@@ -29,3 +29,25 @@ Ne fonctionne pas si le son existe déjà.
 #### Supprimer un artiste
 
 > httpx -m DELETE http://127.0.0.1:8000/api/artist/{ID}/
+
+## COMMANDES
+
+#### Importer les données du fichier artists.json sur la base de données
+
+> python manage.py json_to_db
+
+#### Ajouter un artiste avec ses sons
+
+> python manage.py add_artist "Name" "Song A" "Song B" ...
+
+#### Ajouter un son à un artiste
+
+> python manage.py manage_songs <ID> add "Song A" "Song B" ...
+
+#### Supprimer un artiste
+
+> python manage.py delete_artist <ID>
+
+#### Supprimer un son à un artiste
+
+> python manage.py manage_songs <ID> remove "Song"
