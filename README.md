@@ -1,5 +1,12 @@
 # SAE6Evol.-application
 
+## Jeu de musique
+### Fonctionnalités
+- Trouver le titre d'une chanson
+- Trouver l'artiste de la chanson
+- Trouver les paroles manquantes 
+- Trouver l'artiste et le titre
+
 ## API
 
 #### Récupérer tous les artistes
